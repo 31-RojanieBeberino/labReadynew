@@ -48,13 +48,16 @@ $(document).ready(function () {
 
     //Check All 
 
-    $('#checkAll').change(function () {
-      $('.sub-check').prop('checked', $(this).prop('checked'));
-    });
+     $('#checkAll').on('change', function() {
+        $('.checkItem').prop('checked', this.checked);
+      });
 
-    $('.sub-check').change(function () {
-      // If all sub-checks are checked, check the master checkbox
-      const allChecked = $('.sub-check').length === $('.sub-check:checked').length;
-      $('#checkAll').prop('checked', allChecked);
-    });
+      // If any item is unchecked, uncheck "Check All"
+      $('.checkItem').on('change', function() {
+        if ($('.checkItem:checked').length === $('.checkItem').length) {
+          $('#checkAll').prop('checked', true);
+        } else {
+          $('#checkAll').prop('checked', false);
+        }
+      });
 });

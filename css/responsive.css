@@ -1,0 +1,15 @@
+@media screen and (max-width:500px) {
+    .unit-select{
+       bottom: 40px;
+       width: 100%;
+    }
+
+    .nda-link{
+        bottom: 15px;
+        left: 20px;
+    }
+
+    .upload-box{
+        padding-bottom: 70px;
+    }
+}

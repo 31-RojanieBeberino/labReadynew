@@ -236,11 +236,20 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-.modal-dialog{
+#multiStepModal .modal-dialog{
     width: 100%!important;
     max-width: 1000px!important;
 }
 
 .modal-header{
     border:0px!important;
+}
+
+#warningModal i{
+    font-size: 40px;
+    color:#AA0000;
+}
+
+#warningModal h4{
+    font-size: 45px;
 }

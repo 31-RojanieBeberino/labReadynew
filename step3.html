@@ -58,12 +58,14 @@
             <!-- Left Column -->
                 <div class="col-md-8 col-12">
                     <!-- Top action bar -->
-                    <div class="d-flex align-items-center mb-3">
-                    <input type="checkbox" class="form-check-input me-2" />
-                    <span class="me-auto">Selected 0 Product(s)</span>
-                    <button class="btn btn-light btn-sm me-2 disabled-btn">Bulk Configure</button>
-                    <button class="btn btn-danger btn-sm me-2 disabled-btn">Bulk Delete</button>
-                    <button class="btn btn-light btn-sm disabled-btn">Bulk Risk Statement</button>
+                    <div class="d-flex flex-lg-row flex-column align-items-center mb-3 gap-3">
+                        <div class="d-flex align-items-center">
+                            <input type="checkbox" class="form-check-input me-2" />
+                            <span class="me-auto">Selected 0 Product(s)</span>
+                        </div>
+                        <button class="btn btn-light btn-sm me-2 disabled-btn">Bulk Configure</button>
+                        <button class="btn btn-danger btn-sm me-2 disabled-btn">Bulk Delete</button>
+                        <button class="btn btn-light btn-sm disabled-btn">Bulk Risk Statement</button>
                     </div>
 
                     <!-- File List Item -->
@@ -74,8 +76,8 @@
                                 <strong>Residential Buildings 001.stl</strong>
                             </div>
                         </div>
-                        <div class="w-100 d-flex gap-5 align-items-center p-4">
-                            <div class="d-flex flex-column gap-2" style="width: 20%;">
+                        <div class="row w-100 p-4">
+                            <div class="col-lg-3 col-12 d-flex flex-column gap-2">
                                 <img src="images/img.webp" style="width: 100%;">
                                 <p style="text-align: center;"><b>12.59 X 23.10 X 18.39 Mm 1072.24 Mm³</b></p>
                                 <div class="d-flex gap-2 align-items-center">
@@ -83,7 +85,7 @@
                                     <label>Risk Statement</label>
                                 </div>
                             </div>
-                            <div style="width: 50%;">
+                            <div class="col-lg-6 col-12">
                                 <div class="table-responsive">
                                     <table class="table table-hover align-middle">
                                         
@@ -126,7 +128,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="d-flex flex-column gap-2" style="width: 30%;">
+                            <div class="col-lg-3 col-12 d-flex flex-column gap-2" >
                                 <ul class="p-0" style="list-style: none;">
                                     <li>Unit Model: $1.09</li>
                                     <li>Model: $1.09</li>
@@ -134,8 +136,86 @@
                                 </ul>
                                 <a type="button" class="btn btn-secondary w-100">Configure</a>
                                 <div class="d-flex gap-2 align-items-center justify-content-center">
-                                    <i class="bi bi-copy"></i>
-                                    <i class="bi bi-trash3-fill"></i>
+                                    <i type="button" data-bs-toggle="modal" data-bs-target="#copyModal" class="bi bi-copy"></i>
+                                    <i type="button" data-bs-toggle="modal" data-bs-target="#warningModal" class="bi bi-trash3-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningModal" aria-hidden="true">
+                        <div class="modal-dialog h-100">
+                            <div class="modal-content" style="position: relative;">
+                                <button type="button" class="btn-close" style="position: absolute; right:20px; top:15px; z-index: 1;" data-bs-dismiss="modal" aria-label="Close"></button>
+                                
+                                <div class="modal-body">
+                                    <div class="d-flex gap-4 align-items-start">
+                                        <i class="bi bi-exclamation-circle-fill"></i>
+                                        <div class="d-flex flex-column gap-2">
+                                            <h4>Warning</h4>
+                                            <p>confirm to delete selected items?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex gap-2">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                                    <button type="button" class="btn btn-dark">YES</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="copyModal" tabindex="-1" aria-labelledby="copyModal" aria-hidden="true">
+                        <div class="modal-dialog h-100">
+                            <div class="modal-content" style="position: relative;">
+                                <button type="button" class="btn-close" style="position: absolute; right:20px; top:15px; z-index: 1;" data-bs-dismiss="modal" aria-label="Close"></button>
+                                
+                                <div class="modal-body">
+                                    <div class="d-flex gap-4 align-items-start">
+                                        <div class="d-flex flex-column gap-3">
+                                            <h4 class="text-center">Risk List</h4>
+                                            <div class="d-flex flex-column gap-1">
+                                                <div class="form-check d-flex align-items-center gap-2">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                    <label class="form-check-label" for="checkAll">Check All</label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center gap-2">
+                                                    <input class="form-check-input checkItem" type="checkbox" id="missing-print">
+                                                    <label class="form-check-label" for="missing-print">Missing print</label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center gap-2">
+                                                    <input class="form-check-input checkItem" type="checkbox" id="breakage">
+                                                    <label class="form-check-label" for="breakage">Breakage</label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center gap-2">
+                                                    <input class="form-check-input checkItem" type="checkbox" id="deformation">
+                                                    <label class="form-check-label" for="deformation">Deformation</label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center gap-2">
+                                                    <input class="form-check-input checkItem" type="checkbox" id="support">
+                                                    <label class="form-check-label" for="support">The support is not clean</label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center gap-2">
+                                                    <input class="form-check-input checkItem" type="checkbox" id="reached">
+                                                    <label class="form-check-label" for="reached">Thread cannot be reached</label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center gap-2">
+                                                    <input class="form-check-input checkItem" type="checkbox" id="connecting">
+                                                    <label class="form-check-label" for="connecting">Broken connecting piece</label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-column gap-2">
+                                                <h4>Note:</h4>
+                                                <p>Select your risk treatment which will help us shorten the order delivery time.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex gap-2 justify-content-center">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Reset</button>
+                                    <button type="button" class="btn btn-dark">Confirm</button>
                                 </div>
                             </div>
                         </div>
@@ -189,112 +269,80 @@
                         <div class="d-flex align-items-center h-100 w-100">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                
-                                <div class="modal-header justify-content-center">
-                                    <h5 class="modal-title text-center">Configuration Material</h5>
-                                </div>
-                                
-                                <div class="modal-body">
-                                    <form id="stepForm">
-                                    
-                                    <!-- Step 1 -->
-                                    <div class="form-step active">
-                                        <div class="mb-3">
-                                            <table class="table table-hover align-middle stepDrop">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Technology</td>
-                                                        <td class="d-flex align-items-center gap-2">
-                                                            <div class="form-check d-flex gap-2 align-items-center">
-                                                                <input class="form-check-input" id="radioDefault1" type="radio" name="printingMethod">
-                                                                <label class="form-check-label" for="radioDefault1">SLA (3 materials)</label>
-                                                            </div>
-
-                                                            <div class="form-check d-flex gap-2 align-items-center">
-                                                                <input class="form-check-input" id="radioDefault2" type="radio" name="printingMethod">
-                                                                <label class="form-check-label" for="radioDefault2">SLS (1 material)</label>
-                                                            </div>
-
-                                                            <div class="form-check d-flex gap-2 align-items-center">
-                                                                <input class="form-check-input" id="radioDefault3" type="radio" name="printingMethod">
-                                                                <label class="form-check-label" for="radioDefault3">MJF (2 materials)</label>
-                                                            </div>
-
-                                                            <div class="form-check d-flex gap-2 align-items-center">
-                                                                <input class="form-check-input" id="radioDefault4" type="radio" name="printingMethod">
-                                                                <label class="form-check-label" for="radioDefault4">DLP (1 material)</label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Material</td>
-                                                        <td>
-                                                            <select class="form-select w-50" aria-label="Default select example">
-                                                                <option selected>somos® imagine black</option>
-                                                                <option value="1">One</option>
-                                                                <option value="2">Two</option>
-                                                                <option value="3">Three</option>
-                                                            </select>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Quantity</td>
-                                                        <td style="text-align: right;">
-                                                            <div class="input-group" style="width: 150px;">
-                                                                <button class="btn btn-outline-secondary" type="button" onclick="decreaseValue()">−</button>
-                                                                <input type="number" class="form-control text-center" id="quantityInput" value="1" min="1">
-                                                                <button class="btn btn-outline-secondary" type="button" onclick="increaseValue()">+</button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Lead Time</td>
-                                                        <td>
-                                                            <p class="p-3 w-50" style="background-color: #F2F2F2;">48 hours <br>$1.09/total</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>value-added services</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <button type="button" class="btn btn-dark next-step">Next</button>
+                                    <div class="modal-header justify-content-center" style="position: relative;">
+                                        <h5 class="modal-title text-center">Configuration Material</h5>
+                                        <button type="button" class="btn-close" style="position: absolute; right:20px; top:15px;" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
 
-                                    <!-- Step 2 -->
-                                    <div class="form-step d-none">
-                                        <h5 class="p-3 pe-0 ps-0">Risk List</h5>
-                                        <div class="mb-3">
-                                            <div class="form-check d-flex align-items-center gap-2">
-                                                <input class="form-check-input" type="checkbox" id="checkAll">
-                                                <label class="form-check-label" for="checkAll">Check all</label>
-                                            </div>
+                                    <div class="modal-body">
+                                        <form id="stepForm">
+                                        
+                                            <!-- Step 1 -->
+                                            <div class="form-step active">
+                                                <div class="mb-3">
+                                                    <table class="table table-hover align-middle stepDrop">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Technology</td>
+                                                                <td class="d-flex flex-lg-row flex-column align-items-lg-center align-items-start gap-2">
+                                                                    <div class="form-check d-flex gap-2 align-items-center p-0">
+                                                                        <input class="form-check-input" id="radioDefault1" type="radio" name="printingMethod">
+                                                                        <label class="form-check-label" for="radioDefault1">SLA (3 materials)</label>
+                                                                    </div>
 
-                                            <div class="form-check d-flex align-items-center gap-2">
-                                                <input class="form-check-input sub-check" type="checkbox" id="check1">
-                                                <label class="form-check-label" for="check1">Missing print</label>
-                                            </div>
+                                                                    <div class="form-check d-flex gap-2 align-items-center p-0">
+                                                                        <input class="form-check-input" id="radioDefault2" type="radio" name="printingMethod">
+                                                                        <label class="form-check-label" for="radioDefault2">SLS (1 material)</label>
+                                                                    </div>
 
-                                            <div class="form-check d-flex align-items-center gap-2">
-                                                <input class="form-check-input sub-check" type="checkbox" id="check2">
-                                                <label class="form-check-label" for="check2">Breakage</label>
+                                                                    <div class="form-check d-flex gap-2 align-items-center p-0">
+                                                                        <input class="form-check-input" id="radioDefault3" type="radio" name="printingMethod">
+                                                                        <label class="form-check-label" for="radioDefault3">MJF (2 materials)</label>
+                                                                    </div>
+
+                                                                    <div class="form-check d-flex gap-2 align-items-center p-0">
+                                                                        <input class="form-check-input" id="radioDefault4" type="radio" name="printingMethod">
+                                                                        <label class="form-check-label" for="radioDefault4">DLP (1 material)</label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Material</td>
+                                                                <td>
+                                                                    <select class="form-select w-50" aria-label="Default select example">
+                                                                        <option selected>somos® imagine black</option>
+                                                                        <option value="1">One</option>
+                                                                        <option value="2">Two</option>
+                                                                        <option value="3">Three</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Quantity</td>
+                                                                <td style="text-align: right;">
+                                                                    <div class="input-group" style="width: 150px;">
+                                                                        <button class="btn btn-outline-secondary" type="button" onclick="decreaseValue()">−</button>
+                                                                        <input type="number" class="form-control text-center" id="quantityInput" value="1" min="1">
+                                                                        <button class="btn btn-outline-secondary" type="button" onclick="increaseValue()">+</button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Lead Time</td>
+                                                                <td>
+                                                                    <p class="p-3 w-50" style="background-color: #F2F2F2;">48 hours <br>$1.09/total</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>value-added services</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <button type="button" class="btn btn-dark">SUBMIT</button>
                                             </div>
-                                        </div>
-                                        <button type="button" class="btn btn-secondary prev-step">Previous</button>
-                                        <button type="button" class="btn btn-primary next-step">Next</button>
+                                        </form>
                                     </div>
-
-                                    <!-- Step 3 -->
-                                    <div class="form-step d-none">
-                                        <p>Confirm your details and submit.</p>
-                                        <button type="button" class="btn btn-secondary prev-step">Previous</button>
-                                        <button type="submit" class="btn btn-success">Submit</button>
-                                    </div>
-
-                                    </form>
-                                </div>
-                                
                                 </div>
                             </div>
                         </div>
@@ -396,6 +444,10 @@
                             </div>
                         </div>
                     </div>
+
+
+
+                    
                 </div>
             </div>
         </div>
